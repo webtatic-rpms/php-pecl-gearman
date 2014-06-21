@@ -2,7 +2,7 @@
 
 %global php_zendabiver %((echo 0; php -i 2>/dev/null | sed -n 's/^PHP Extension => //p') | tail -1)
 %global php_version %((echo 0; php-config --version 2>/dev/null) | tail -1)
-%global basepkg   php55w
+%global basepkg   php54w
 %global pecl_name gearman
 
 %global extver 1.1.2
