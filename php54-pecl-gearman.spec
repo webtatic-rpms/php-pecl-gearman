@@ -39,6 +39,8 @@ Requires:      php = %{php_version}
 %endif
 Provides:      php-pecl(%{pecl_name}) = %{version}
 Provides:      php-pecl(%{pecl_name})%{?_isa} = %{version}
+Provides:      php-pecl-%{pecl_name} = %{version}
+Provides:      php-pecl-%{pecl_name}%{?_isa} = %{version}
 
 Requires(post): %{__pecl}
 Requires(postun): %{__pecl}
@@ -157,6 +159,7 @@ fi
 %changelog
 * Sun Sep 14 2014 Andy Thompson <andy@webtatic.com> - 1.1.2-2
 - Filter .so provides < EL7
+- Add provides for original packages
 
 * Sat Jun 21 2014 Andy Thompson <andy@webtatic.com> - 1.1.2-1
 - Add pecl spec for gearman extension version 1.1.2
