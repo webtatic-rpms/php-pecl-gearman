@@ -14,7 +14,7 @@
 Summary:       PHP wrapper to libgearman
 Name:          %{basepkg}-pecl-%{pecl_name}
 Version:       %{extver}
-Release:       1%{?dist}
+Release:       2%{?dist}
 License:       PHP
 Group:         Development/Languages
 URL:           http://pecl.php.net/package/%{pecl_name}
@@ -42,6 +42,12 @@ Provides:      php-pecl(%{pecl_name})%{?_isa} = %{version}
 
 Requires(post): %{__pecl}
 Requires(postun): %{__pecl}
+
+%if 0%{?fedora} < 20 && 0%{?rhel} < 7
+# Filter private shared
+%{?filter_provides_in: %filter_provides_in %{_libdir}/.*\.so$}
+%{?filter_setup}
+%endif
 
 %description
 This extension uses libgearman library to provide API for
@@ -149,5 +155,8 @@ fi
 %endif
 
 %changelog
+* Sun Sep 14 2014 Andy Thompson <andy@webtatic.com> - 1.1.2-2
+- Filter .so provides < EL7
+
 * Sat Jun 21 2014 Andy Thompson <andy@webtatic.com> - 1.1.2-1
 - Add pecl spec for gearman extension version 1.1.2
